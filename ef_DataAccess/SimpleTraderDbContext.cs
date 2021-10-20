@@ -11,6 +11,10 @@ namespace SimpleTrader.EF
 {
     public class SimpleTraderDbContext : DbContext
     {
+        public SimpleTraderDbContext(DbContextOptions options) : base(options)
+        {
+        }
+
         public DbSet<User> Users { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<AssetTransaction> AssetTransactions { get; set; }
@@ -21,11 +25,5 @@ namespace SimpleTrader.EF
             base.OnModelCreating(modelBuilder);
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlite(@"Data Source=D:\_data\projets\_cegep\_1ss\udemy_ef_core_complete_guide\SimpleTrader.db");
-
-            base.OnConfiguring(optionsBuilder);
-        }
     }
 }

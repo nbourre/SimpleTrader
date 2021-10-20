@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using SimplerTrader.Domain;
+using SimplerTrader.Domain.Models;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
