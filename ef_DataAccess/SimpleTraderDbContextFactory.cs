@@ -10,11 +10,14 @@ namespace SimpleTrader.EF
 {
     public class SimpleTraderDbContextFactory : IDesignTimeDbContextFactory<SimpleTraderDbContext>
     {
-        public SimpleTraderDbContext CreateDbContext(string[] args)
+        public SimpleTraderDbContext CreateDbContext(string[] args = null)
         {
-            var options = new DbContextOptionsBuilder<SimpleTraderDbContext>();
-            options.UseSqlite(@"Data Source=Data\SimpleTrader.db");
+            var optionsBuilder = new DbContextOptionsBuilder<SimpleTraderDbContext>();
+            optionsBuilder.UseSqlite(@"Data Source=Data\SimpleTrader.db");
+            
+            return new SimpleTraderDbContext(optionsBuilder.Options);
 
         }
+
     }
 }
