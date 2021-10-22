@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using SimplerTrader.Domain;
 using SimpleTrader.Domain.Models;
 using System;
@@ -22,10 +23,10 @@ namespace SimpleTrader.EF.Services
         {
             using (SimpleTraderDbContext context = _contextFactory.CreateDbContext())
             {
-                await context.Set<T>().AddAsync(entity);
+                EntityEntry<T> createdEntity = await context.Set<T>().AddAsync(entity);
                 await context.SaveChangesAsync();
 
-                return entity;
+                return createdEntity.Entity;
             }
         }
 
@@ -33,7 +34,7 @@ namespace SimpleTrader.EF.Services
         {
             using (SimpleTraderDbContext context = _contextFactory.CreateDbContext())
             {
-                T entity = await context.Set<T>().FirstOrDefaultAsync(a => a.Id == id);
+                T entity = await context.Set<T>().FirstOrDefaultAsync(e => e.Id == id);
                 context.Set<T>().Remove(entity);
                 await context.SaveChangesAsync();
 
@@ -43,17 +44,36 @@ namespace SimpleTrader.EF.Services
 
         public async Task<T> Get(int id)
         {
-            throw new NotImplementedException();
+            using (SimpleTraderDbContext context = _contextFactory.CreateDbContext())
+            {
+                T entity = await context.Set<T>().FirstOrDefaultAsync(e => e.Id == id);
+
+                return entity;
+            }
+
         }
 
         public async Task<IEnumerable<T>> GetAll()
         {
-            throw new NotImplementedException();
+            using (SimpleTraderDbContext context = _contextFactory.CreateDbContext())
+            {
+                IEnumerable<T> entities = await context.Set<T>().ToListAsync();
+
+                return entities;
+                
+            }
         }
 
         public async Task<T> Update(int id, T entity)
         {
-            throw new NotImplementedException();
+            using (SimpleTraderDbContext context = _contextFactory.CreateDbContext())
+            {
+                entity.Id = id;
+                context.Set<T>().Update(entity);
+                await context.SaveChangesAsync();
+
+                return entity;
+            }
         }
     }
 }
