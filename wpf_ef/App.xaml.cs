@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using wpf_ef.ViewModels;
 
 namespace wpf_ef
 {
@@ -18,6 +19,8 @@ namespace wpf_ef
             base.OnStartup(e);
 
             MainWindow win = new MainWindow();
+
+            win.DataContext = new MainViewModel();
 
             win.Show();
         }

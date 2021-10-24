@@ -11,8 +11,6 @@ namespace wpf_ef
         public MainWindow()
         {
             InitializeComponent();
-
-            DataContext = new MainViewModel();
         }
     }
 }

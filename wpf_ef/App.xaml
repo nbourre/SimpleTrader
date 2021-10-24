@@ -1,8 +1,21 @@
 ﻿<Application x:Class="wpf_ef.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:SimpletTrader.WPF.ViewModels"
+             xmlns:view="clr-namespace:SimpletTrader.WPF.Views"
              xmlns:local="clr-namespace:wpf_ef">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/Common.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type vm:HomeViewModel}">
+                <view:HomeView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:PortfolioViewModel}">
+                <view:PortfolioView/>
+            </DataTemplate>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
