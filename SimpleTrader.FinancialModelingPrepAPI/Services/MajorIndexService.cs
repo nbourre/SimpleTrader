@@ -20,7 +20,6 @@ namespace SimpleTrader.FinancialModelingPrepAPI.Services
 
                 string uri = $"https://financialmodelingprep.com/api/v3/quote/{GetUriSuffixe(indexType)}?apikey={notbestway}";
 
-                /// TODO : Rendu https://www.youtube.com/watch?v=0SCKUine6tY&list=PLA8ZIAm2I03jSfo18F7Y65XusYzDusYu5&index=4&t=6m00s
                 HttpResponseMessage response = await client.GetAsync(uri);
 
                 string jsonResponse = await response.Content.ReadAsStringAsync();
