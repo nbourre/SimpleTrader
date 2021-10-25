@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SimpleTrader.Domain.Models;
+using SimpleTrader.FinancialModelingPrepAPI.Services;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -16,13 +18,14 @@ namespace wpf_ef
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            base.OnStartup(e);
 
             MainWindow win = new MainWindow();
 
             win.DataContext = new MainViewModel();
 
             win.Show();
+
+            base.OnStartup(e);
         }
     }
 }

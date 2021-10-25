@@ -1,4 +1,5 @@
-﻿using SimpletTrader.WPF.State.Navigators;
+﻿using SimpleTrader.FinancialModelingPrepAPI.Services;
+using SimpletTrader.WPF.State.Navigators;
 using SimpletTrader.WPF.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -31,7 +32,8 @@ namespace SimpletTrader.WPF.Commands
                 switch (vt)
                 {
                     case ViewType.Home:
-                        _navigator.CurrentViewModel = new HomeViewModel();
+                        _navigator.CurrentViewModel = new HomeViewModel(
+                            MajorIndexViewModel.LoadMajorIndexViewModel(new MajorIndexService()));
                         break;
                     case ViewType.Portfolio:
                         _navigator.CurrentViewModel = new PortfolioViewModel();

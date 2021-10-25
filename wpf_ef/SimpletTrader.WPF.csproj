@@ -10,6 +10,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ef_DataAccess\SimpleTrader.EF.csproj" />
     <ProjectReference Include="..\ef_Model\SimpleTrader.Domain.csproj" />
+    <ProjectReference Include="..\SimpleTrader.FinancialModelingPrepAPI\SimpleTrader.FinancialModelingPrepAPI.csproj" />
   </ItemGroup>
 
 </Project>
