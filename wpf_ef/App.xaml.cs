@@ -18,14 +18,11 @@ namespace wpf_ef
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-
             MainWindow win = new MainWindow();
 
             win.DataContext = new MainViewModel();
 
             win.Show();
-
-            new StockPriceService().GetPrice("APPL");
 
             base.OnStartup(e);
         }

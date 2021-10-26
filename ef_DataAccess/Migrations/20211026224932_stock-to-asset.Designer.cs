@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SimpleTrader.EF;
 
 namespace SimpleTrader.EF.Migrations
 {
     [DbContext(typeof(SimpleTraderDbContext))]
-    partial class SimpleTraderDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211026224932_stock-to-asset")]
+    partial class stocktoasset
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -98,7 +100,7 @@ namespace SimpleTrader.EF.Migrations
                         .WithMany("AssetTransactions")
                         .HasForeignKey("AccountId");
 
-                    b.OwnsOne("SimplerTrader.Domain.Models.Asset", "Asset", b1 =>
+                    b.OwnsOne("SimplerTrader.Domain.Models.Asset", "Stock", b1 =>
                         {
                             b1.Property<int>("AssetTransactionId")
                                 .HasColumnType("INTEGER");
@@ -119,7 +121,7 @@ namespace SimpleTrader.EF.Migrations
 
                     b.Navigation("Account");
 
-                    b.Navigation("Asset");
+                    b.Navigation("Stock");
                 });
 
             modelBuilder.Entity("SimplerTrader.Domain.Models.Account", b =>

@@ -13,4 +13,8 @@
     <ProjectReference Include="..\SimpleTrader.FinancialModelingPrepAPI\SimpleTrader.FinancialModelingPrepAPI.csproj" />
   </ItemGroup>
 
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy /y $(SolutionDir)ef_DataAccess\Data\SimpleTrader.db  $(ProjectDir)$(OutDir)" />
+  </Target>
+
 </Project>
