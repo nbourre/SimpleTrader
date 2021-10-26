@@ -13,6 +13,7 @@ namespace wpf_ef.ViewModels
 
         public MainViewModel()
         {
+            Navigator.UpdateCurrentViewModelCommand.Execute(ViewType.Home);
         }
     }
 }

@@ -9,11 +9,11 @@ namespace SimpletTrader.WPF.ViewModels
 {
     public class HomeViewModel : BaseViewModel
     {
-        public MajorIndexViewModel MajorIndexViewModel { get; set; }
+        public MajorIndexListingViewModel MajorIndexListingViewModel { get; set; }
 
-        public HomeViewModel(MajorIndexViewModel majorIndexViewModel)
+        public HomeViewModel(MajorIndexListingViewModel majorIndexListingViewModel)
         {
-            MajorIndexViewModel = majorIndexViewModel;
+            MajorIndexListingViewModel = majorIndexListingViewModel;
         }
     }
 }
