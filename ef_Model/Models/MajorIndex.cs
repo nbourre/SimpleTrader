@@ -52,5 +52,6 @@ namespace SimpleTrader.Domain.Models
         public double Price { get; set; }
         public double Change { get; set; }
         public MajorIndexType Type { get; set; }
+        public string Name { get; set; }
     }
 }

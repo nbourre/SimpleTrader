@@ -25,6 +25,8 @@ namespace wpf_ef
 
             win.Show();
 
+            new StockPriceService().GetPrice("APPL");
+
             base.OnStartup(e);
         }
     }

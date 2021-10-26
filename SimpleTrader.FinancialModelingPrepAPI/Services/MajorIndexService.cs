@@ -14,19 +14,14 @@ namespace SimpleTrader.FinancialModelingPrepAPI.Services
     {
         public async Task<MajorIndex> GetMajorIndex(MajorIndexType indexType)
         {
-            using (HttpClient client = new HttpClient())
+            using (var client = new FinancialModelingPrepHttpClient())
             {
-                var notbestway = "fd9b5be0f1e85b9aa1b854cb31de6828";
+                string uri = $"quote/{GetUriSuffixe(indexType)}";
 
-                string uri = $"https://financialmodelingprep.com/api/v3/quote/{GetUriSuffixe(indexType)}?apikey={notbestway}";
+                var majorIndexes = await client.GetAsync<List<MajorIndex>>(uri);
 
-                HttpResponseMessage response = await client.GetAsync(uri);
-
-                string jsonResponse = await response.Content.ReadAsStringAsync();
-
-                List<MajorIndex> majorIndices = JsonConvert.DeserializeObject<List<MajorIndex>>(jsonResponse);
-                majorIndices[0].Type = indexType;
-                return majorIndices[0];
+                majorIndexes[0].Type = indexType;
+                return majorIndexes[0];
             }
         }
 
@@ -44,8 +39,7 @@ namespace SimpleTrader.FinancialModelingPrepAPI.Services
                     return "^SP500TR";
                     break;
                 default:
-                    return "^DJI";
-                    break;
+                    throw new Exception("MajorIndexType does not have a suffix defined.");
             }
         }
     }
