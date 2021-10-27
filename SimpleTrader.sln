@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31613.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpletTrader.WPF", "wpf_ef\SimpletTrader.WPF.csproj", "{3112B1EA-A6BF-4FB1-97AE-5F9731DCD0F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleTrader.WPF", "wpf_ef\SimpleTrader.WPF.csproj", "{3112B1EA-A6BF-4FB1-97AE-5F9731DCD0F4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleTrader.EF", "ef_DataAccess\SimpleTrader.EF.csproj", "{E4A20164-63CD-4ABE-8F85-2A045C978F83}"
 EndProject

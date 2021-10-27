@@ -1,11 +1,10 @@
-﻿using SimpleTrader.Domain.Models;
+﻿using SimplerTrader.Domain;
+using SimplerTrader.Domain.Models;
+using SimpleTrader.Domain.Services;
+using SimpleTrader.Domain.Services.TransactionServices;
+using SimpleTrader.EF;
+using SimpleTrader.EF.Services;
 using SimpleTrader.FinancialModelingPrepAPI.Services;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 using wpf_ef.ViewModels;
 
@@ -16,8 +15,16 @@ namespace wpf_ef
     /// </summary>
     public partial class App : Application
     {
-        protected override void OnStartup(StartupEventArgs e)
+        protected override async void OnStartup(StartupEventArgs e)
         {
+            IStockPriceService stockPriceService = new StockPriceService();
+            IDataService<Account> accountService = new AccountDataService(new SimpleTraderDbContextFactory());
+            IBuyStockService buyStockService = new BuyStockService(stockPriceService, accountService);
+
+            Account buyer = await accountService.Get(1);
+
+            await buyStockService.BuyStock(buyer, "T", 5000);
+
             MainWindow win = new MainWindow();
 
             win.DataContext = new MainViewModel();
