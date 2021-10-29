@@ -1,18 +1,14 @@
-﻿using SimplerTrader.Domain;
-using SimplerTrader.Domain.Models;
-using SimpletTrader.WPF.State.Navigators;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
+﻿using SimpletTrader.WPF.State.Navigators;
 
 namespace wpf_ef.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
-        public INavigator Navigator { get; set; } = new Navigator();
+        public INavigator Navigator { get; set; }
 
-        public MainViewModel()
+        public MainViewModel(INavigator navigator)
         {
+            Navigator = navigator;
             Navigator.UpdateCurrentViewModelCommand.Execute(ViewType.Home);
         }
     }
