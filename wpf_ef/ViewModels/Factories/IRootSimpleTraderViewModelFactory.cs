@@ -1,9 +1,9 @@
-﻿using SimpletTrader.WPF.State.Navigators;
+﻿using SimpleTrader.WPF.State.Navigators;
 using wpf_ef.ViewModels;
 
 namespace SimpleTrader.WPF.ViewModels.Factories
 {
-    public interface ISimpleTraderViewModelAbstractFactory
+    public interface IRootSimpleTraderViewModelFactory
     {
         BaseViewModel CreateViewModel(ViewType viewType);
     }

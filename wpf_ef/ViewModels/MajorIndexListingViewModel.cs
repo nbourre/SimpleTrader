@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using wpf_ef.ViewModels;
 
-namespace SimpletTrader.WPF.ViewModels
+namespace SimpleTrader.WPF.ViewModels
 {
     public class MajorIndexListingViewModel : BaseViewModel
     {

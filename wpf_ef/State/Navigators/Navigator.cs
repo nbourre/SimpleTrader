@@ -1,9 +1,9 @@
 ﻿using SimpleTrader.WPF.ViewModels.Factories;
-using SimpletTrader.WPF.Commands;
+using SimpleTrader.WPF.Commands;
 using System.Windows.Input;
 using wpf_ef.ViewModels;
 
-namespace SimpletTrader.WPF.State.Navigators
+namespace SimpleTrader.WPF.State.Navigators
 {
     public class Navigator : BaseViewModel, INavigator
     {
@@ -20,7 +20,7 @@ namespace SimpletTrader.WPF.State.Navigators
 
         public ICommand UpdateCurrentViewModelCommand { get; set; }
 
-        public Navigator(ISimpleTraderViewModelAbstractFactory viewModelFactory)
+        public Navigator(IRootSimpleTraderViewModelFactory viewModelFactory)
         {
             UpdateCurrentViewModelCommand = new UpdateCurrentViewModelCommand(this, viewModelFactory);
         }

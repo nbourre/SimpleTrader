@@ -1,4 +1,4 @@
-﻿using SimpletTrader.WPF.State.Navigators;
+﻿using SimpleTrader.WPF.State.Navigators;
 
 namespace wpf_ef.ViewModels
 {

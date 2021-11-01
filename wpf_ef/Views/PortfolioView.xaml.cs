@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SimpletTrader.WPF.Views
+namespace SimpleTrader.WPF.Views
 {
     /// <summary>
     /// Interaction logic for PortfolioView.xaml

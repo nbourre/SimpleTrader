@@ -7,8 +7,8 @@ using SimpleTrader.EF;
 using SimpleTrader.EF.Services;
 using SimpleTrader.FinancialModelingPrepAPI.Services;
 using SimpleTrader.WPF.ViewModels.Factories;
-using SimpletTrader.WPF.State.Navigators;
-using SimpletTrader.WPF.ViewModels;
+using SimpleTrader.WPF.State.Navigators;
+using SimpleTrader.WPF.ViewModels;
 using System;
 using System.Windows;
 using wpf_ef.ViewModels;
@@ -41,13 +41,14 @@ namespace wpf_ef
             services.AddSingleton<IBuyStockService, BuyStockService>();
             services.AddSingleton<IMajorIndexService, MajorIndexService>();
 
-            services.AddSingleton<ISimpleTraderViewModelAbstractFactory, SimpleTraderViewModelAbstractFactory>();
+            services.AddSingleton<IRootSimpleTraderViewModelFactory, RootSimpleTraderViewModelFactory>();
             services.AddSingleton<ISimpleTraderViewModelFactory<HomeViewModel>, HomeViewModelFactory>();
             services.AddSingleton<ISimpleTraderViewModelFactory<PortfolioViewModel>, PortfolioViewModelFactory>();
             services.AddSingleton<ISimpleTraderViewModelFactory<MajorIndexListingViewModel>, MajorIndexListingViewModelFactory>();
 
             services.AddScoped<INavigator, Navigator>();
             services.AddScoped<MainViewModel>();
+            services.AddScoped<BuyViewModel>();
 
             services.AddScoped<MainWindow>(s => new MainWindow(s.GetRequiredService<MainViewModel>()));
 

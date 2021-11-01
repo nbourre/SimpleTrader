@@ -1,4 +1,4 @@
-﻿using SimpletTrader.WPF.ViewModels;
+﻿using SimpleTrader.WPF.ViewModels;
 
 namespace SimpleTrader.WPF.ViewModels.Factories
 {

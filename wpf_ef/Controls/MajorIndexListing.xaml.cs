@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SimpletTrader.WPF.Controls
+namespace SimpleTrader.WPF.Controls
 {
     /// <summary>
     /// Interaction logic for MajorIndexListing.xaml

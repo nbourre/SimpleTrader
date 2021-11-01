@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace SimpleTrader.WPF.Views
 {
     /// <summary>
-    /// Interaction logic for HomeView.xaml
+    /// Interaction logic for BuyView.xaml
     /// </summary>
-    public partial class HomeView : UserControl
+    public partial class BuyView : UserControl
     {
-        public HomeView()
+        public BuyView()
         {
             InitializeComponent();
         }

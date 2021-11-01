@@ -1,26 +1,24 @@
-﻿using SimpleTrader.FinancialModelingPrepAPI.Services;
-using SimpletTrader.WPF.State.Navigators;
-using SimpletTrader.WPF.ViewModels;
+﻿using SimpleTrader.WPF.State.Navigators;
+using SimpleTrader.WPF.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using wpf_ef.ViewModels;
 
 namespace SimpleTrader.WPF.ViewModels.Factories
 {
-    public class SimpleTraderViewModelAbstractFactory : ISimpleTraderViewModelAbstractFactory
+    public class RootSimpleTraderViewModelFactory : IRootSimpleTraderViewModelFactory
     {
         private readonly ISimpleTraderViewModelFactory<HomeViewModel> _homeViewModelFactory;
         private readonly ISimpleTraderViewModelFactory<PortfolioViewModel> _portfolioViewModelFactory;
+        private readonly BuyViewModel _buyViewModel;
 
-        public SimpleTraderViewModelAbstractFactory(
+        public RootSimpleTraderViewModelFactory(
             ISimpleTraderViewModelFactory<HomeViewModel> homeViewModelFactory,
-            ISimpleTraderViewModelFactory<PortfolioViewModel> portfolioViewModelFactory)
+            ISimpleTraderViewModelFactory<PortfolioViewModel> portfolioViewModelFactory,
+            BuyViewModel buyViewModel)
         {
             _homeViewModelFactory = homeViewModelFactory;
             _portfolioViewModelFactory = portfolioViewModelFactory;
+            _buyViewModel = buyViewModel;
 
         }
 
@@ -30,13 +28,12 @@ namespace SimpleTrader.WPF.ViewModels.Factories
             {
                 case ViewType.Home:
                     return _homeViewModelFactory.CreateViewModel();
-                    break;
                 case ViewType.Portfolio:
                     return _portfolioViewModelFactory.CreateViewModel();
-                    break;
+                case ViewType.Buy:
+                    return _buyViewModel;
                 default:
                     throw new ArgumentException("The ViewType does not have a ViewModel", nameof(viewType));
-                    break;
             }
         }
     }

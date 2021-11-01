@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using wpf_ef.ViewModels;
 
-namespace SimpletTrader.WPF.State.Navigators
+namespace SimpleTrader.WPF.State.Navigators
 {
     public enum ViewType
     {
         Home,
         Portfolio,
+        Buy,
     }
     public interface INavigator
     {
