@@ -17,6 +17,7 @@ namespace SimpleTrader.FinancialModelingPrepAPI.Services
         {
             using (var client = new FinancialModelingPrepHttpClient())
             {
+                
                 string uri = $"quote-short/{symbol}";
 
                 var stockPrices = await client.GetAsync<List<StockPriceResult>>(uri);

@@ -28,6 +28,7 @@ namespace SimpleTrader.WPF.Commands
             try
             {
                 _viewModel.StockPrice = await _stockPriceService.GetPrice(_viewModel.Symbol);
+                _viewModel.SearchResultSymbol = _viewModel.Symbol;
             }
             catch (Exception e)
             {

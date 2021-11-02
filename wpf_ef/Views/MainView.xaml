@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:wpf_ef"
         xmlns:controls="clr-namespace:SimpleTrader.WPF.Folders"
         mc:Ignorable="d"
-        Title="Simple Trader" Height="450" Width="800">
+        Title="Simple Trader" Height="500" Width="850">
     <Window.Resources>
         <Style TargetType="StatusBar">
             <Setter Property="Height" Value="auto" />
@@ -27,7 +27,9 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <controls:NavigationBar Grid.Row="0" DataContext="{Binding Navigator}"/>
-            <ContentControl Grid.Row="1" Content="{Binding Navigator.CurrentViewModel}" />
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                <ContentControl Content="{Binding Navigator.CurrentViewModel}" />
+            </ScrollViewer>
         </Grid>
     </DockPanel>
 </Window>
