@@ -12,6 +12,8 @@ using SimpleTrader.WPF.ViewModels;
 using System;
 using System.Windows;
 using wpf_ef.ViewModels;
+using SimpleTrader.Domain.Services.AuthenticationServices;
+using Microsoft.AspNet.Identity;
 
 namespace wpf_ef
 {
@@ -21,8 +23,10 @@ namespace wpf_ef
     public partial class App : Application
     {
         protected override async void OnStartup(StartupEventArgs e)
-        {
+        {   
             IServiceProvider serviceProvider = CreateServiceProvider();
+            IAuthenticationService authentication = serviceProvider.GetRequiredService<IAuthenticationService>();
+            await authentication.Login("nick", "test123");
 
             MainWindow win = serviceProvider.GetRequiredService<MainWindow>();
             win.DataContext = serviceProvider.GetRequiredService<MainViewModel>();
@@ -38,8 +42,12 @@ namespace wpf_ef
             services.AddSingleton<SimpleTraderDbContextFactory>();
             services.AddSingleton<IStockPriceService, StockPriceService>();
             services.AddSingleton<IDataService<Account>, AccountDataService>();
+            services.AddSingleton<IAccountService, AccountDataService>();
+            services.AddSingleton<IAuthenticationService, AuthenticationService>();
             services.AddSingleton<IBuyStockService, BuyStockService>();
             services.AddSingleton<IMajorIndexService, MajorIndexService>();
+
+            services.AddSingleton<IPasswordHasher, PasswordHasher>();
 
             services.AddSingleton<IRootSimpleTraderViewModelFactory, RootSimpleTraderViewModelFactory>();
             services.AddSingleton<ISimpleTraderViewModelFactory<HomeViewModel>, HomeViewModelFactory>();
