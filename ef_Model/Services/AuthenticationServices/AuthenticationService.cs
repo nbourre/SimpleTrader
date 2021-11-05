@@ -21,6 +21,11 @@ namespace SimpleTrader.Domain.Services.AuthenticationServices
         {
             var storedAccount = await accountService.GetByUsername(username);
 
+            if (storedAccount == null)
+            {
+                throw new UserNotFoundException(username);
+            }
+
             var passwordResult = hasher.VerifyHashedPassword(storedAccount.AccountHolder.PasswordHash, password);
 
             if (passwordResult != PasswordVerificationResult.Success)
@@ -40,13 +45,13 @@ namespace SimpleTrader.Domain.Services.AuthenticationServices
                 result = RegistrationResult.PasswordsDoNotMatch;
             }
 
-            var emailAccount = accountService.GetByEmail(email);
+            var emailAccount = await accountService.GetByEmail(email);
             if (emailAccount != null)
             {
                 result = RegistrationResult.EmailAlreadyExists;
             }
 
-            var userAccount = accountService.GetByUsername(username);
+            var userAccount = await accountService.GetByUsername(username);
             if (userAccount != null)
             {
                 result = RegistrationResult.UsernameAlreadyExists;
